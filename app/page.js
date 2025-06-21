@@ -1,6 +1,38 @@
+"use client";
+import Header from '../components/Header';
+import { useState } from 'react';
+import TicketForm from '../components/TicketForm';
+import TicketList from '../components/TicketList';
+
 export default function Home() {
+  const [tickets, setTickets] = useState([
+    { id: 1, title: 'Help with printer issue', description: 'The printer on the second floor is not working. Can someone with technical skills take a look?', accepted: false },
+    { id: 2, title: 'Looking for a stapler', description: 'Does anyone have a stapler I could borrow for a few hours?', accepted: false },
+  ]);
+
+  const handleAcceptTicket = (id) => {
+    setTickets(tickets.map(ticket =>
+      ticket.id === id ? { ...ticket, accepted: true } : ticket
+    ));
+  };
+
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+    // In a real app, you would send this data to an API.
+    // For this static example, we'll just clear the form.
+    event.target.reset();
+  };
+
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
+    <div className="container">
+      {/* The existing Tailwind classes are removed to rely on globals.css
+          You can choose to use a combination of Tailwind and custom CSS
+          if you prefer, but for clarity in this example, we'll rely
+          more on the new CSS classes. If you want to keep Tailwind,
+          you would integrate the new custom classes alongside or within
+          your Tailwind structure. For now, assume Tailwind classes
+          are being replaced by the new custom classes for design.
+      */}
       <header>
         <h1 className="text-4xl font-bold mb-8">Office Community Board</h1>
       </header>
@@ -14,69 +46,22 @@ export default function Home() {
           </ul>
         </section>
         <section className="flex-1 p-6 border rounded-lg shadow-md">
- <h2 className="text-2xl font-semibold mb-4">Require</h2>
+          <h2 className="text-2xl font-semibold mb-4">Require</h2>
           <ul>
             <li className="mb-2">Looking for a charging cable for iPhone</li>
             <li>Seeking recommendations for lunch spots nearby</li>
           </ul>
         </section>
       </main>
+      <section className="ticket-form-section">
+        <h2 className="section-title">Raise a Ticket</h2>
+        <TicketForm onSubmit={handleFormSubmit} />
+      </section>
 
-      <section className="w-full max-w-4xl mt-8 p-6 border rounded-lg shadow-md">
-        <h2 className="text-2xl font-semibold mb-4">Raise a Ticket</h2>
- <form className="flex flex-col gap-4">
- <div>
- <label htmlFor="title" className="block text-sm font-medium text-gray-700">
- Title
- </label>
- <input
- type="text"
- id="title"
- name="title"
- className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
- />
- </div>
- <div>
- <label htmlFor="description" className="block text-sm font-medium text-gray-700">
- Description
- </label>
- <textarea
- id="description"
- name="description"
- rows="3"
- className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
- ></textarea>
- </div>
- <button
- type="submit"
- className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
- >
- Submit Ticket
- </button>
- </form>
- </section>
-
- <section className="w-full max-w-4xl mt-8 p-6 border rounded-lg shadow-md">
- <h2 className="text-2xl font-semibold mb-4">Existing Tickets</h2>
- <div className="space-y-4">
- <div className="border p-4 rounded-md">
- <h3 className="text-lg font-semibold">Help with printer issue</h3>
- <p className="text-gray-600">
- The printer on the second floor is not working. Can someone with technical skills take a look?
- </p>
- <button className="mt-2 inline-flex items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded-full shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
- Accept
- </button>
- </div>
- <div className="border p-4 rounded-md">
- <h3 className="text-lg font-semibold">Looking for a stapler</h3>
- <p className="text-gray-600">Does anyone have a stapler I could borrow for a few hours?</p>
- <button className="mt-2 inline-flex items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded-full shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
- Accept
- </button>
- </div>
- </div>
- </section>
+      <section className="ticket-list-section">
+        <h2 className="section-title">Existing Tickets</h2>
+        <TicketList tickets={tickets} onAccept={handleAcceptTicket} />
+      </section>
     </div>
   );
 }

@@ -1,0 +1,227 @@
+:root {
+  /* Color Palette (Google Material Design inspired) */
+  --primary-color: #4285F4; /* Google Blue */
+  --primary-color-hover: #1a73e8;
+  --primary-color-light: #8AB4F8;
+  --primary-color-dark: #3367D6;
+  --secondary-color: #FBBC05; /* Google Yellow */
+  --secondary-color-hover: #f9ab00;
+  --secondary-color-dark: #F5A623;
+  --accent-color: #0F9D58; /* Google Green */
+  --accent-color-light: #81C995;
+  --accent-color-hover: #0d864f;
+  --accent-color-dark: #0B8043;
+  --warn-color: #DB4437; /* Google Red */
+  --warn-color-dark: #C53929;
+  --text-color-primary: rgba(0, 0, 0, 0.87); /* Black with opacity */
+  --text-color-secondary: rgba(0, 0, 0, 0.60); /* Black with opacity */
+  --text-color-disabled: rgba(0, 0, 0, 0.38); /* Black with opacity */
+  --text-color-on-primary: rgba(255, 255, 255, 1); /* White */
+  --background-color: #F5F5F5; /* Light Grey */
+  --surface-color: #FFFFFF; /* White */
+  --divider-color: rgba(0, 0, 0, 0.12); /* Black with opacity */
+
+  /* Typography */
+  --font-family: 'Roboto', sans-serif; /* Common Google font */
+  --font-size-body: 1rem;
+  --font-size-heading1: 6rem; /* H1 - Extra large */
+  --font-size-heading2: 3.75rem; /* H2 - Large */
+  --font-size-heading3: 3rem; /* H3 */
+  --font-size-heading4: 2.125rem; /* H4 */
+  --font-size-heading5: 1.5rem; /* H5 */
+  --font-size-heading6: 1.25rem; /* H6 - Medium */
+  --font-size-subtitle1: 1rem;
+  --font-size-subtitle2: 0.875rem;
+  --font-size-caption: 0.75rem;
+  --font-size-overline: 0.625rem;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+  --line-height-normal: 1.5;
+
+  /* Spacing */
+  --spacing-unit: 8px; /* Base spacing unit */
+  --spacing-extra-small: calc(var(--spacing-unit) * 0.5); /* 4px */
+  --spacing-small: var(--spacing-unit); /* 8px */
+  --spacing-medium: calc(var(--spacing-unit) * 2); /* 16px */
+  --spacing-large: calc(var(--spacing-unit) * 3); /* 24px */
+  --spacing-extra-large: calc(var(--spacing-unit) * 4); /* 32px */
+
+  /* Border Radius */
+  --border-radius-small: 4px;
+  --border-radius-medium: 8px;
+
+  /* Box Shadow (Material Design Elevation) */
+  --elevation-1: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  --elevation-2: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  --elevation-3: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  --elevation-4: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  --elevation-5: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-normal);
+  color: var(--text-color-primary);
+  background-color: var(--background-color);
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: var(--font-weight-regular);
+  margin-top: var(--spacing-medium);
+  margin-bottom: var(--spacing-small);
+}
+
+h1 { font-size: var(--font-size-heading1); }
+h2 { font-size: var(--font-size-heading2); }
+h3 { font-size: var(--font-size-heading3); }
+h4 { font-size: var(--font-size-heading4); }
+h5 { font-size: var(--font-size-heading5); }
+h6 { font-size: var(--font-size-heading6); font-weight: var(--font-weight-medium); }
+
+button {
+  font-family: var(--font-family);
+  font-size: var(--font-size-subtitle2); /* Button text size */
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+  padding: var(--spacing-small) var(--spacing-medium);
+  border: none;
+  border-radius: var(--border-radius-small);
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  outline: none;
+}
+
+button.button-primary {
+  background-color: var(--primary-color);
+  color: var(--text-color-on-primary);
+  box-shadow: var(--elevation-1);
+}
+
+button.button-primary:hover {
+  background-color: var(--primary-color-hover);
+  box-shadow: var(--elevation-2);
+}
+
+button.button-accent {
+  background-color: var(--accent-color);
+  color: var(--text-color-on-primary); /* Usually white or dark text on accent */
+  box-shadow: var(--elevation-1);
+}
+
+button.accent:hover {
+  background-color: var(--accent-color-dark);
+  box-shadow: var(--elevation-2);
+}
+
+button:disabled {
+  background-color: rgba(0, 0, 0, 0.12);
+  color: var(--text-color-disabled);
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+/* Basic Card Style */
+.card {
+  background-color: var(--surface-color);
+  border-radius: var(--border-radius-small);
+  box-shadow: var(--elevation-1);
+  padding: var(--spacing-medium);
+  margin-bottom: var(--spacing-medium);
+}
+
+/* Input Field Basic Style */
+input[type="text"],
+textarea {
+  font-family: var(--font-family);
+  font-size: var(--font-size-body);
+  padding: var(--spacing-small);
+  margin-bottom: var(--spacing-small);
+  border: 1px solid var(--divider-color);
+  border-radius: var(--border-radius-small);
+  width: 100%;
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+input[type="text"]:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 1px var(--primary-color);
+}
+
+/* Component Specific Styles */
+.app-header {
+  background-color: var(--surface-color);
+  color: var(--text-color-primary);
+  padding: var(--spacing-medium);
+  text-align: center;
+  font-size: var(--font-size-heading5);
+  font-weight: var(--font-weight-medium);
+  box-shadow: var(--elevation-1);
+  margin-bottom: var(--spacing-large);
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: var(--spacing-medium);
+}
+
+.main-content {
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  gap: var(--spacing-medium);
+  margin-bottom: var(--spacing-large);
+}
+
+.section {
+  flex: 1; /* Allow sections to grow */
+  min-width: 300px; /* Ensure sections have a minimum width before wrapping */
+  background-color: var(--surface-color);
+  padding: var(--spacing-medium);
+  border-radius: var(--border-radius-small);
+  box-shadow: var(--elevation-1);
+}
+
+.section-heading {
+  font-size: var(--font-size-heading6);
+  font-weight: var(--font-weight-medium);
+  margin-top: 0;
+  margin-bottom: var(--spacing-medium);
+  color: var(--text-color-secondary);
+}
+
+.form-group {
+  margin-bottom: var(--spacing-medium);
+}
+
+.form-label {
+  display: block; /* Labels on their own line */
+  font-size: var(--font-size-subtitle2);
+  font-weight: var(--font-weight-medium);
+  margin-bottom: var(--spacing-extra-small);
+  color: var(--text-color-primary); /* Use primary text color for labels */
+  color: var(--text-color-secondary);
+}
+
+.ticket-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ticket-item {
+  background-color: var(--surface-color);
+  border: 1px solid var(--divider-color);
+  border-radius: var(--border-radius-small);
+  padding: var(--spacing-medium);
+  margin-bottom: var(--spacing-small);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: var(--elevation-1);
+}
