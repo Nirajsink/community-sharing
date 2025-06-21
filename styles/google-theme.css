@@ -155,8 +155,8 @@ textarea:focus {
 
 /* Component Specific Styles */
 .app-header {
-  background-color: var(--surface-color);
-  color: var(--text-color-primary);
+  background-color: blue !important;
+  color: yellow !important;
   padding: var(--spacing-medium);
   text-align: center;
   font-size: var(--font-size-heading5);
